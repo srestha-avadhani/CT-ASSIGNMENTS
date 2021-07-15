@@ -1,0 +1,21 @@
+fm = 100;
+fc = 1000;
+fs = 10000;
+t = 0:1/fs:4999/fs;
+Am = 1;
+Ac = 1;
+kf = 0.06;
+m = Am*cos(2*pi*fm*t);
+c = Ac*cos(2*pi*fc*t);
+phi = 2*pi*kf*cumsum(m);
+U = Ac*cos(2*pi*fc*t + phi);
+figure;
+subplot(3,1,1)
+plot(t(1:1000),m(1:1000),'g');grid on;
+title('Message Signal');
+subplot(3,1,2);
+plot(t(1:1000),c(1:1000),'g');grid on;
+title('Carrier Signal');
+subplot(3,1,3);
+plot(t(1:1000),U(1:1000),'g');grid on;
+title('Modulated Signal');
